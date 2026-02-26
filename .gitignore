@@ -1,0 +1,4 @@
+omeka_plugins/*
+omeke_files/*
+omeka_themes/*
+.DS_Store

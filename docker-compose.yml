@@ -1,0 +1,26 @@
+services:
+  omeka:
+    build: .
+    container_name: omeka-classic
+    ports:
+      - "18080:80"
+    volumes:
+      - ./omeka_files:/var/www/html/files
+      - ./omeka_plugins:/var/www/html/plugins
+      - ./omeka_themes:/var/www/html/themes
+      - ./db.ini:/var/www/html/db.ini
+      - ./.htaccess:/var/www/html/.htaccess
+    depends_on:
+      - db
+  db:
+    image: mariadb:10.5
+    container_name: omeka-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: omeka
+      MYSQL_USER: omeka
+      MYSQL_PASSWORD: omeka123
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
