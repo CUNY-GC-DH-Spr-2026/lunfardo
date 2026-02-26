@@ -3,7 +3,7 @@ services:
     build: .
     container_name: omeka-classic
     ports:
-      - "18080:80"
+      - "18081:80"
     volumes:
       - ./omeka_files:/var/www/html/files
       - ./omeka_plugins:/var/www/html/plugins
